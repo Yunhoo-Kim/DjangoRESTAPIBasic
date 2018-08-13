@@ -13,17 +13,14 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
-from django.urls import path, include
-from rest_framework.documentation import include_docs_urls
-from rest_framework_jwt.views import obtain_jwt_token
+from django.urls import path
+from .views import UserCreateReadView, UserDetailView
 
+app_name = "userinfo"
 
 urlpatterns = [
-    path('book/', include("books.urls", namespace="books")),
-    path('user/', include("userinfo.urls", namespace="userinfo")),
-    path('docs', include_docs_urls(title="REST API 파헤치기! By Hoo")),
-    path('api-token-auth/', obtain_jwt_token)
+    path('', UserCreateReadView.as_view(), name="user_create"),
+    path('detail/', UserDetailView.as_view(), name="user_detail"),
 ]
-
 
 

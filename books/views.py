@@ -1,8 +1,7 @@
-from django.contrib.auth.models import User
 from rest_framework.generics import ListCreateAPIView
 from rest_framework.generics import RetrieveUpdateDestroyAPIView
 from .models import Book
-from .serializers import BookSerializer, UserSerializer
+from .serializers import BookSerializer
 
 
 class BookCreateReadView(ListCreateAPIView):
@@ -24,13 +23,4 @@ class BookReadUpdateDeleteView(RetrieveUpdateDestroyAPIView):
     lookup_field = 'id'
 
 
-class UserCreateReadView(ListCreateAPIView):
-    """
-    get:
-    * get user list
 
-    post:
-    * create user
-    """
-    queryset = User.objects.all()
-    serializer_class = UserSerializer

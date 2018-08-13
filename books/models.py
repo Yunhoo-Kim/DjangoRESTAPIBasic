@@ -1,7 +1,5 @@
 from django.db import models
 
-# Create your models here.
-
 
 class Book(models.Model):
     title = models.TextField()
@@ -11,3 +9,6 @@ class Book(models.Model):
 
     class Meta:
         db_table = "book"
+
+
+        
