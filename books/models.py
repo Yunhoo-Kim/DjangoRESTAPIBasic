@@ -11,4 +11,3 @@ class Book(models.Model):
         db_table = "book"
 
 
-        
