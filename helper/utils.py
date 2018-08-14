@@ -5,6 +5,7 @@ from datetime import datetime
 
 from rest_framework_jwt.settings import api_settings
 from rest_framework_jwt.utils import jwt_get_secret_key
+from .makejson import MakeJSON
 
 
 def jwt_payload_handler(user):
@@ -52,3 +53,8 @@ def jwt_get_user_secret_key(user):
     return user.id
 
 
+def jwt_response_payload_handler(token, user=None, request=None):
+    makejson = MakeJSON()
+
+    makejson.addResult(token=token)
+    return makejson.getJson()
